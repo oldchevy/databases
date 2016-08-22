@@ -13,6 +13,8 @@ var app = {
     // Get username
     app.username = window.location.search.substr(10);
 
+    // Send POST request for new user here.
+
     // Cache jQuery selectors
     app.$message = $('#message');
     app.$chats = $('#chats');
@@ -61,9 +63,10 @@ var app = {
       //data: { order: '-createdAt'},
       success: function(data) {
         // Don't bother if we have nothing to work with
-        data = JSON.parse(data);
+        console.dir(data);
+        data = { results: data};
         data.results.reverse();
-        console.log(data.results);
+
         if (!data.results || !data.results.length) { return; }
 
         // Get the last message
@@ -201,7 +204,7 @@ var app = {
         // Select the menu option
         app.$roomSelect.val(roomname);
 
-        // Fetch messages again
+        // POST to classes/rooms, and then fetch messages again once that's done
         app.fetch();
       }
     } else {

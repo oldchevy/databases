@@ -3,6 +3,7 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
+      console.log('Recieved GET request');
       models.messages.get(function(body) {
         res.json(body);
       });

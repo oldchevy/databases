@@ -11,7 +11,7 @@ module.exports = {
 
       //console.log('In messages GET model.');
       db.dbConnection.query(getQuery, function(err, body) {
-        //console.log('In messages query success:', body);
+        // console.log('In messages query success:', body);
         callback(body);
 
       });
